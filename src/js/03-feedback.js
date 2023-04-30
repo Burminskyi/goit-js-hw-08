@@ -23,14 +23,18 @@ function onFormInput(e) {
 function onFormSubmit(e) {
   e.preventDefault();
 
-  const formDataSubmit = {
-    email: refs.email.value,
-    message: refs.message.value,
-  };
-  console.log(formDataSubmit);
+  if (refs.email.value.trim() === '' || refs.message.value.trim() === '') {
+    alert('Поля Email та Message повинні бути заповнені');
+  } else {
+    const formDataSubmit = {
+      email: refs.email.value,
+      message: refs.message.value,
+    };
+    console.log(formDataSubmit);
 
-  e.currentTarget.reset();
-  localStorage.removeItem(STORAGE_KEY);
+    e.currentTarget.reset();
+    localStorage.removeItem(STORAGE_KEY);
+  }
 }
 
 function fillInputFields() {
